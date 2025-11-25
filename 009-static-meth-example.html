@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Пример использования статических методов</title>
+</head>
+
+<body>
+    <div id="res"></div>
+    <template id="temp">
+        <div>
+            <p>Name: {{name}}</p>
+            <p>Age: {{age}}</p>
+        </div>
+    </template>
+
+    <script src="mustache.min.js"></script>
+    <script>
+        class User {
+            name
+            age
+            constructor(name, age) {
+                this.name = name;
+                this.age = age;
+            }
+        }
+        let arr=new Array()
+        arr.push(new User("Nastya",17))
+        arr.push(new User("Oleg",30))
+        arr.push(new User("Gig",13))
+        arr.push(new User("Petr",85))
+        arr.push(new User("???",50))
+
+        let temp=document.querySelector("#temp").innerHTML
+
+        for(let i=0;i<arr.length;i++){
+
+            let newdiv = Mustache.render(temp,arr[i])
+            let res = document.getElementById("res")
+            res.innerHTML +=newdiv
+            console.log(newdiv)
+        }
+        
+    </script>
+</body>
+
+</html>
