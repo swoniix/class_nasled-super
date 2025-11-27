@@ -33,37 +33,32 @@
                 return Math.PI * Math.pow(this.radius, 2);
             }
         }
+        class Cone extends Circle {
+            constructor(radius, height) {
+                super(radius);
+                this.height = height;
 
-        class Cone extends Circle{
-           constructor(height,volume)
-        {
-            super(radius);
-            this.height=height;
-            this.volume=volume;
+            }
+            getHeight() {
+                return this.height
+            }
+            getRadius() {
+                return this.radius
+            }
+            getVolume() {
+                return (1 / 3) * super.getArea() * this.height;
+            }
+            getArea() {
+                let slantH = Math.sqrt(this.radius ** 2 + this.height ** 2);
+                return Math.PI * this.radius * (this.radius + slantH);
+            }
+        }
+        let con = new Cone(2, 5)
+        console.log("Radius:", con.radius);
+        console.log("Height:", con.height);
+        console.log("Volume:", con.getVolume());
+        console.log("Area:", con.getArea());
 
-        }
-        getHeight(){
-            return this.height
-        }
-        getRadius(){
-            return this.radius
-        }
-        getVolume(){
-            return this.volume = Math.floor(Math.PI *(Math.pow(this.radius,2)*this.height));
-        }
-        getArea(){
-            return Math.PI*this.radius*(this.radius+Math.sqrt(this.radius*this.radius+this.height*this.height))
-        }
-       }
-       let con=new Cone(2, 5)
-       console.log("Area: "+ con.getArea())
-
-    //    let temp=document.querySelector("#temp").innerHTML
-
-    //    let newdiv = Mustache.render(temp)
-    //    let res = document.getElementById("res")
-    //    res.innerHTML +=newdiv
-    //    console.log(newdiv)
     </script>
 </body>
 
